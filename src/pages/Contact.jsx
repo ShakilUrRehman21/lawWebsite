@@ -71,7 +71,7 @@ const Contact = () => {
                                 <form className="contact-form" action="https://formsubmit.co/sanskariscout@gmail.com" method="POST">
                                     <input type="hidden" name="_captcha" value="false" />
                                     {/* Redirect URL - Change this string to your live deployed domain URL once it is live! e.g value="https://mysite.com/contact?success=true" */}
-                                    <input type="hidden" name="_next" value="domain_name" />
+                                    <input type="hidden" name="_next" value="https://advocate-sarfaraz-website.vercel.app/" />
 
                                     <div className="form-group">
                                         <label htmlFor="name">Full Name</label>
@@ -122,7 +122,7 @@ const Contact = () => {
             </section>
 
             {/* Floating Call Button for Mobile */}
-            <a href="tel:+919818225972" className="floating-call-btn" aria-label="Call Now">
+            <a href="tel:+919250845823" className="floating-call-btn" aria-label="Call Now">
                 <PhoneCall size={24} />
             </a>
         </div>
