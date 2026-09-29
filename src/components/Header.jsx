@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Scale, Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import './Header.css';
 
 const Header = () => {
@@ -8,13 +8,9 @@ const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const location = useLocation();
 
-    // Determine if we are on the home page where header is initially transparent
-    const isHome = location.pathname === '/';
-
     useEffect(() => {
         const handleScroll = () => {
-            // Solid on scroll, or if not on home page
-            if (window.scrollY > 50) {
+            if (window.scrollY > 30) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
@@ -22,12 +18,10 @@ const Header = () => {
         };
 
         window.addEventListener('scroll', handleScroll);
-        handleScroll(); // Check on mount
-
+        handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
     }, [location]);
 
-    // Close mobile menu on route change
     useEffect(() => {
         setIsMobileMenuOpen(false);
     }, [location]);
@@ -41,22 +35,23 @@ const Header = () => {
         { name: 'Contact', path: '/contact' },
     ];
 
-    const headerClass = `header ${isScrolled || !isHome ? 'header-solid' : 'header-transparent'}`;
-
     return (
-        <header className={headerClass}>
-            <div className="container header-container">
-                <Link to="/" className="logo">
-                    <h1>Advocate <br />Sarfaraz Hussain</h1>
+        <header className={`lawcrest-header ${isScrolled ? 'scrolled' : ''}`}>
+            <div className="container lawcrest-header-container">
+                <Link to="/" className="lawcrest-logo">
+                    <span className="lawcrest-logo-title">Sarfaraz Law</span>
+                    <span className="lawcrest-logo-badge">Advocate & Associates</span>
                 </Link>
 
-                <nav className={`desktop-nav ${isMobileMenuOpen ? 'open' : ''}`}>
-                    <ul className="nav-list">
+                <nav className="lawcrest-desktop-nav">
+                    <ul className="lawcrest-nav-list">
                         {navLinks.map((link) => (
                             <li key={link.name}>
                                 <NavLink
                                     to={link.path}
-                                    className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+                                    className={({ isActive }) =>
+                                        `lawcrest-nav-link ${isActive ? 'active' : ''}`
+                                    }
                                 >
                                     {link.name}
                                 </NavLink>
@@ -65,31 +60,46 @@ const Header = () => {
                     </ul>
                 </nav>
 
-                <button
-                    className="mobile-menu-toggle"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    aria-label="Toggle Menu"
-                >
-                    {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
+                <div className="lawcrest-header-actions">
+                    <Link to="/contact" className="lawcrest-header-btn">
+                        <span>Book a Consultation</span>
+                        <ArrowUpRight size={16} className="btn-icon" />
+                    </Link>
+
+                    <button
+                        className="lawcrest-mobile-toggle"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        aria-label="Toggle Navigation"
+                    >
+                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
             </div>
 
-            {isMobileMenuOpen && (
-                <div className="mobile-menu">
-                    <ul className="mobile-nav-list">
+            {/* Mobile Navigation Drawer */}
+            <div className={`lawcrest-mobile-drawer ${isMobileMenuOpen ? 'open' : ''}`}>
+                <div className="lawcrest-mobile-inner">
+                    <ul className="lawcrest-mobile-list">
                         {navLinks.map((link) => (
                             <li key={link.name}>
                                 <NavLink
                                     to={link.path}
-                                    className="mobile-nav-link"
+                                    className={({ isActive }) =>
+                                        `lawcrest-mobile-link ${isActive ? 'active' : ''}`
+                                    }
                                 >
                                     {link.name}
                                 </NavLink>
                             </li>
                         ))}
                     </ul>
+                    <div className="lawcrest-mobile-cta">
+                        <Link to="/contact" className="lawcrest-header-btn mobile-cta-btn">
+                            Book a Consultation
+                        </Link>
+                    </div>
                 </div>
-            )}
+            </div>
         </header>
     );
 };

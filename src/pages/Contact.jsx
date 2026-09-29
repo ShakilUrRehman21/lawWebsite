@@ -1,105 +1,142 @@
 import React from 'react';
-import { MapPin, Phone, Mail, Clock, PhoneCall } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, ShieldCheck, ArrowUpRight } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
     return (
-        <div className="contact-page">
-            <br /><br /><br />
-            <section className="section contact-section">
+        <div className="lawcrest-contact-page">
+            {/* Dark Hero */}
+            <section className="contact-hero section-dark">
                 <div className="container">
-                    <div className="contact-grid">
+                    <div className="contact-hero-content">
+                        <span className="pill-badge pill-badge-dark">Schedule Consultation</span>
+                        <h1 className="editorial-title text-white">Contact & Chambers</h1>
+                        <p className="contact-hero-lead">
+                            Schedule a privileged legal consultation to discuss your matters. Our dedicated team is prepared to provide decisive representation.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
-                        {/* Left: Contact Details */}
-                        <div className="contact-details">
-                            <h2>Get in Touch</h2>
-                            <p className="contact-intro">
-                                Schedule a consultation to discuss your legal matters. Our dedicated team is ready to provide the steadfast representation you deserve.
+            {/* Split Contact Section (Cream Background) */}
+            <section className="contact-main-section section-cream">
+                <div className="container">
+                    <div className="contact-split-grid">
+                        
+                        {/* Left Column: Chamber Info & Addresses */}
+                        <div className="contact-info-col">
+                            <span className="statement-tag">Direct Access</span>
+                            <h2 className="contact-col-title">Chamber Locations</h2>
+                            <p className="contact-col-desc">
+                                We welcome clients for in-person consultations at both our Delhi High Court chambers and South Delhi office.
                             </p>
 
-                            <div className="info-blocks">
-                                <div className="info-block">
-                                    <div className="info-icon">
-                                        <MapPin size={24} />
+                            <div className="chamber-cards-stack">
+                                {/* Delhi High Court */}
+                                <div className="chamber-location-card">
+                                    <div className="chamber-icon-box">
+                                        <MapPin size={22} />
                                     </div>
-                                    <div className="info-content">
-                                        <h3>Office Address</h3>
-                                        <p>Delhi High Court, Lawyers Chamber Block-I,<br />Consultation Room, New Delhi-110003</p>
-                                        <p>G-74, 4th Floor, Muradi Rd,<br />Batla House, Jamia Nagar, Okhla,<br />New Delhi, Delhi 110025</p>
-                                    </div>
-                                </div>
-
-                                <div className="info-block">
-                                    <div className="info-icon">
-                                        <Phone size={24} />
-                                    </div>
-                                    <div className="info-content">
-                                        <h3>Phone</h3>
-                                        <p>+91 9818225972</p>
-                                        <p>+91 9250845823</p>
+                                    <div className="chamber-details-box">
+                                        <h3>Delhi High Court Chamber</h3>
+                                        <p>Lawyers Chamber Block-I, Consultation Room, New Delhi-110003</p>
+                                        <span className="chamber-note">Primary Litigation Chamber</span>
                                     </div>
                                 </div>
 
-                                <div className="info-block">
-                                    <div className="info-icon">
-                                        <Mail size={24} />
+                                {/* Batla House Office */}
+                                <div className="chamber-location-card">
+                                    <div className="chamber-icon-box">
+                                        <MapPin size={22} />
                                     </div>
-                                    <div className="info-content">
-                                        <h3>Email</h3>
-                                        <p>Sarfarazhussain466@gmail.com</p>
-                                        <p>aa.affanhus@gmail.com</p>
+                                    <div className="chamber-details-box">
+                                        <h3>South Delhi Office</h3>
+                                        <p>G-74, 4th Floor, Muradi Rd, Batla House, Jamia Nagar, Okhla, New Delhi, Delhi 110025</p>
+                                        <span className="chamber-note">Evening Client Consultations</span>
                                     </div>
                                 </div>
 
-                                <div className="info-block">
-                                    <div className="info-icon">
-                                        <Clock size={24} />
+                                {/* Phone & Email */}
+                                <div className="contact-meta-row">
+                                    <div className="meta-box">
+                                        <div className="meta-icon"><Phone size={18} /></div>
+                                        <div>
+                                            <h4>Direct Phone</h4>
+                                            <a href="tel:+919818225972">+91 9818225972</a>
+                                            <a href="tel:+919250845823">+91 9250845823</a>
+                                        </div>
                                     </div>
-                                    <div className="info-content">
-                                        <h3>Consultation Hours</h3>
+
+                                    <div className="meta-box">
+                                        <div className="meta-icon"><Mail size={18} /></div>
+                                        <div>
+                                            <h4>Official Email</h4>
+                                            <a href="mailto:sarfarazhussain466@gmail.com">sarfarazhussain466@gmail.com</a>
+                                            <a href="mailto:aa.affanhus@gmail.com">aa.affanhus@gmail.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Consultation Hours */}
+                                <div className="chamber-hours-card">
+                                    <Clock size={20} className="hours-icon" />
+                                    <div>
+                                        <strong>Consultation Hours:</strong>
                                         <p>Monday - Friday: 4:00 PM - 8:00 PM</p>
-                                        <p>Saturday: By Appointment Only</p>
+                                        <p>Saturday: By Prior Appointment Only</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Right: Contact Form */}
-                        <div className="contact-form-wrapper">
-                            <div className="contact-form-card">
-                                <h3>Request a Consultation</h3>
-                                <form className="contact-form" action="https://formsubmit.co/sanskariscout@gmail.com" method="POST">
+                        {/* Right Column: Request Consultation Form */}
+                        <div className="contact-form-col">
+                            <div className="consultation-form-card">
+                                <div className="form-card-header">
+                                    <span className="pill-badge pill-badge-cream">Confidential Inquiry</span>
+                                    <h3>Request a Consultation</h3>
+                                    <p>Fill out the details below. We aim to respond within 24 hours.</p>
+                                </div>
+
+                                <form className="lawcrest-form" action="https://formsubmit.co/sanskariscout@gmail.com" method="POST">
                                     <input type="hidden" name="_captcha" value="false" />
-                                    {/* Redirect URL - Change this string to your live deployed domain URL once it is live! e.g value="https://mysite.com/contact?success=true" */}
                                     <input type="hidden" name="_next" value="https://advocate-sarfaraz-website.vercel.app/" />
 
-                                    <div className="form-group">
-                                        <label htmlFor="name">Full Name</label>
-                                        <input type="text" id="name" name="name" placeholder="John Doe" required />
+                                    <div className="form-field-group">
+                                        <label htmlFor="name">Full Name *</label>
+                                        <input type="text" id="name" name="name" placeholder="Advocate / Client Full Name" required />
                                     </div>
 
-                                    <div className="form-row">
-                                        <div className="form-group">
-                                            <label htmlFor="email">Email Address</label>
-                                            <input type="email" id="email" name="email" placeholder="john@example.com" required />
+                                    <div className="form-row-two">
+                                        <div className="form-field-group">
+                                            <label htmlFor="email">Email Address *</label>
+                                            <input type="email" id="email" name="email" placeholder="client@example.com" required />
                                         </div>
-                                        <div className="form-group">
-                                            <label htmlFor="phone">Phone Number</label>
-                                            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required />
+                                        <div className="form-field-group">
+                                            <label htmlFor="phone">Phone Number *</label>
+                                            <input type="tel" id="phone" name="phone" placeholder="+91 98XXX XXXXX" required />
                                         </div>
                                     </div>
 
-                                    <div className="form-group">
-                                        <label htmlFor="subject">Subject</label>
-                                        <input type="text" id="subject" name="subject" placeholder="Nature of Legal Matter" required />
+                                    <div className="form-field-group">
+                                        <label htmlFor="subject">Legal Domain / Subject *</label>
+                                        <input type="text" id="subject" name="subject" placeholder="e.g. Criminal Bail, Civil Suit, MACT, Family Law" required />
                                     </div>
 
-                                    <div className="form-group">
-                                        <label htmlFor="message">Message</label>
-                                        <textarea id="message" name="message" rows="5" placeholder="Briefly describe your case..." required></textarea>
+                                    <div className="form-field-group">
+                                        <label htmlFor="message">Summary of Case / Legal Matter *</label>
+                                        <textarea id="message" name="message" rows="5" placeholder="Briefly describe the key facts, court location, or current status of proceedings..." required></textarea>
                                     </div>
 
-                                    <button type="submit" className="btn btn-primary submit-btn">Send Message</button>
+                                    <button type="submit" className="btn-lawcrest btn-lawcrest-solid-dark form-submit-btn">
+                                        <span>Send Consultation Request</span>
+                                        <Send size={16} />
+                                    </button>
+
+                                    <p className="form-confidentiality-notice">
+                                        <ShieldCheck size={14} className="notice-icon" />
+                                        <span>All communications are treated with strict advocate-client professional privilege.</span>
+                                    </p>
                                 </form>
                             </div>
                         </div>
@@ -108,8 +145,8 @@ const Contact = () => {
                 </div>
             </section>
 
-            {/* Embedded Map Section */}
-            <section className="map-section">
+            {/* Embedded Location Map */}
+            <section className="lawcrest-map-section">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d50736.76256254008!2d77.2162897582031!3d28.566107100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce38a6cfefc51%3A0x52b130a99342d649!2sSarfaraz%20Hussain-Advocate!5e1!3m2!1sen!2sus!4v1772139932318!5m2!1sen!2sus"
                     width="100%"
@@ -120,11 +157,6 @@ const Contact = () => {
                     title="Law Office Location"
                 ></iframe>
             </section>
-
-            {/* Floating Call Button for Mobile */}
-            <a href="tel:+919250845823" className="floating-call-btn" aria-label="Call Now">
-                <PhoneCall size={24} />
-            </a>
         </div>
     );
 };

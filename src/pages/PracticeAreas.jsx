@@ -1,88 +1,123 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Shield, Scale, Users, FileText, AlertCircle, Home as HomeIcon, HeartHandshake, BookOpen, Building, Plus, Minus, ArrowUpRight } from 'lucide-react';
 import './PracticeAreas.css';
 
 const practiceData = [
     {
         title: 'Criminal Litigation',
+        icon: Shield,
         content: 'We provide robust defense strategies in complex criminal trials, bail matters, appeals, and white-collar crimes. Our approach is founded on meticulous evidence analysis and rigorous cross-examination to safeguard our clients liberty and reputation.'
     },
     {
         title: 'Civil Litigation',
+        icon: Scale,
         content: 'Strategic representation in a wide array of civil disputes, including breach of contract, specific performance, injunctions, and tort claims. We aim to protect your commercial and personal interests through decisive legal action.'
     },
     {
         title: 'Family Law',
+        icon: Users,
         content: 'Navigating sensitive family matters with compassion and legal acumen. Our services cover divorce proceedings, child custody disputes, maintenance, alimony, and domestic violence cases, striving for amicable resolutions where possible.'
     },
     {
         title: 'NI Act 138',
+        icon: FileText,
         content: 'Specialized handling of cheque bounce cases under Section 138 of the Negotiable Instruments Act. We assist both complainants in recovering their dues and accused individuals in presenting a strong defense.'
     },
     {
         title: 'Consumer Matters',
+        icon: AlertCircle,
         content: 'Advocating for consumer rights against unfair trade practices, defective goods, and deficiency in services. We represent clients before District Forums, State Commissions, and the National Consumer Disputes Redressal Commission (NCDRC).'
     },
     {
         title: 'MACT Cases',
+        icon: HomeIcon,
         content: 'Ensuring maximum compensation for victims of motor accidents. We handle claims before Motor Accident Claims Tribunals (MACT), addressing issues of negligence, injury, and fatal accidents with utmost diligence.'
     },
     {
         title: 'Welfare Act',
+        icon: HeartHandshake,
         content: 'Dedicated representation in matters concerning the welfare of senior citizens, marginalized communities, and employment disputes, ensuring that statutory rights are enforced and protected.'
     },
     {
         title: 'Waqf Cases',
+        icon: BookOpen,
         content: 'Expert legal counsel in disputes spanning Waqf properties, management issues, and administrative conflicts. We represent clients before Waqf Tribunals and High Courts to ensure the proper administration of Waqf estates.'
     },
     {
         title: 'Property Matters',
+        icon: Building,
         content: 'Comprehensive assistance in real estate disputes, partition suits, title verification, eviction proceedings, and landlord-tenant conflicts. We secure your property rights through thorough documentation and aggressive representation.'
     }
 ];
 
 const PracticeAreas = () => {
-    const [openIndex, setOpenIndex] = useState(0); // First one open by default
+    const [openIndex, setOpenIndex] = useState(0);
 
     const toggleAccordion = (index) => {
         setOpenIndex(openIndex === index ? -1 : index);
     };
 
     return (
-        <div className="practice-areas-page">
-            <br /><br /><br />
+        <div className="lawcrest-practice-page">
+            {/* Dark Hero */}
+            <section className="practice-hero section-dark">
+                <div className="container">
+                    <div className="practice-hero-content">
+                        <span className="pill-badge pill-badge-dark">Legal Domains</span>
+                        <h1 className="editorial-title text-white">Our Practice Areas</h1>
+                        <p className="practice-hero-lead">
+                            Dedicated to providing specialized legal solutions and aggressive courtroom representation across diverse domains of Indian law.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
-            <section className="section accordion-section">
-                <div className="container accordion-container">
-                    <div className="section-header center mb-5">
-                        <h2>Our Areas of Expertise</h2>
-                        <p>Dedicated to providing specialized legal solutions across diverse domains.</p>
+            {/* Main Practice Content (Cream Background) */}
+            <section className="practice-content-section section-cream">
+                <div className="container">
+                    <div className="section-title-wrap text-center">
+                        <span className="statement-tag">Areas of Expertise</span>
+                        <h2 className="editorial-title">Comprehensive Legal Defense</h2>
+                        <p className="editorial-subtitle">
+                            Every case is handled with meticulous case preparation, in-depth legal research, and strategic courtroom advocacy.
+                        </p>
                     </div>
 
-                    <div className="accordion-wrapper">
+                    <div className="practice-cards-wrapper">
                         {practiceData.map((item, index) => {
                             const isOpen = openIndex === index;
+                            const IconComp = item.icon;
                             return (
-                                <div
-                                    key={index}
-                                    className={`accordion-item ${isOpen ? 'active' : ''}`}
-                                    onMouseEnter={() => setOpenIndex(index)}
-                                    onMouseLeave={() => setOpenIndex(-1)}
-                                >
+                                <div key={index} className={`practice-block-card ${isOpen ? 'active' : ''}`}>
                                     <button
-                                        className="accordion-header"
+                                        className="practice-block-header"
                                         onClick={() => toggleAccordion(index)}
                                         aria-expanded={isOpen}
                                     >
-                                        <h3>{item.title}</h3>
-                                        <span className="accordion-icon">
-                                            {isOpen ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
-                                        </span>
+                                        <div className="practice-header-left">
+                                            <span className="practice-number">0{index + 1}</span>
+                                            <div className="practice-icon-wrap">
+                                                <IconComp size={22} />
+                                            </div>
+                                            <h3 className="practice-title-text">{item.title}</h3>
+                                        </div>
+                                        <div className="practice-header-right">
+                                            <span className="toggle-btn-sign">
+                                                {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+                                            </span>
+                                        </div>
                                     </button>
 
-                                    <div className="accordion-collapse">
-                                        <div className="accordion-body">
-                                            {item.content}
+                                    <div className="practice-block-collapse">
+                                        <div className="practice-block-body">
+                                            <p className="practice-desc-paragraph">{item.content}</p>
+                                            <div className="practice-action-box">
+                                                <Link to="/contact" className="btn-lawcrest btn-lawcrest-solid-dark">
+                                                    <span>Consult on {item.title}</span>
+                                                    <ArrowUpRight size={15} />
+                                                </Link>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

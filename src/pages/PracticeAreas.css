@@ -1,114 +1,147 @@
-/* Practice Areas Styles */
+/* Lawcrest Practice Areas Styles */
 
-.accordion-section {
-    background-color: var(--background);
-    min-height: 60vh;
+.lawcrest-practice-page {
+    padding-top: 80px;
 }
 
-.accordion-container {
-    max-width: 800px;
+.practice-hero {
+    padding: 100px 0 80px;
+    background: radial-gradient(circle at 50% 0%, #151a24 0%, #090909 70%);
+    border-bottom: 1px solid var(--border-dark);
+    text-align: center;
 }
 
-.mb-5 {
-    margin-bottom: 3rem;
+.practice-hero-content {
+    max-width: 780px;
+    margin: 0 auto;
 }
 
-.accordion-wrapper {
+.practice-hero-lead {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    margin-top: 16px;
+}
+
+.practice-content-section {
+    padding: 80px 0 100px;
+}
+
+.practice-cards-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 16px;
+    margin-top: 40px;
 }
 
-.accordion-item {
-    background-color: var(--surface);
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
+.practice-block-card {
+    background-color: #ffffff;
+    border: 1px solid var(--border-cream-dark);
+    border-radius: var(--radius-md);
     overflow: hidden;
     transition: all var(--transition-smooth);
 }
 
-.accordion-item:hover {
-    border-color: var(--primary);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+.practice-block-card:hover {
+    border-color: #bfa882;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
 }
 
-.accordion-item.active {
-    border-color: var(--primary);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-}
-
-.accordion-header {
+.practice-block-header {
     width: 100%;
-    padding: 1.5rem 2rem;
-    background: transparent;
-    border: none;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding: 26px 32px;
+    background: transparent;
     cursor: pointer;
     text-align: left;
+    transition: background-color var(--transition-fast);
 }
 
-.accordion-header h3 {
-    font-family: var(--font-body);
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--primary);
-    margin-bottom: 0;
-    transition: color var(--transition-fast);
+.practice-block-header:hover {
+    background-color: #faf9f5;
 }
 
-.accordion-item.active .accordion-header h3 {
-    color: var(--accent);
+.practice-header-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
 }
 
-.accordion-icon {
-    color: var(--text-muted);
+.practice-number {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-dark-muted);
+}
+
+.practice-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background-color: #f3efe6;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color var(--transition-fast);
+    color: var(--accent-gold-dark);
+    flex-shrink: 0;
 }
 
-.accordion-item.active .accordion-icon {
-    color: var(--accent);
+.practice-title-text {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-dark-primary);
 }
 
-/* 
-  For smooth expanding animation using CSS Grid
-  Support fallback with max-height
-*/
-.accordion-collapse {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows var(--transition-smooth);
+.toggle-btn-sign {
+    color: var(--text-dark-muted);
+    flex-shrink: 0;
 }
 
-.accordion-item.active .accordion-collapse {
-    grid-template-rows: 1fr;
-}
-
-.accordion-body {
+.practice-block-collapse {
+    max-height: 0;
     overflow: hidden;
-    padding: 0 2rem;
-    color: var(--text-muted);
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.practice-block-card.active .practice-block-collapse {
+    max-height: 400px;
+}
+
+.practice-block-body {
+    padding: 0 32px 30px 100px;
+    border-top: 1px solid var(--border-cream);
+    margin-top: 6px;
+    padding-top: 20px;
+}
+
+.practice-desc-paragraph {
+    font-size: 15px;
     line-height: 1.7;
+    color: var(--text-dark-secondary);
+    margin-bottom: 20px;
 }
 
-.accordion-item.active .accordion-body {
-    padding-bottom: 1.5rem;
+.practice-action-box {
+    display: flex;
 }
 
-@media (max-width: 600px) {
-    .accordion-header {
-        padding: 1.25rem 1.5rem;
+@media (max-width: 900px) {
+    .practice-block-header {
+        padding: 20px;
     }
 
-    .accordion-body {
-        padding: 0 1.5rem;
+    .practice-block-body {
+        padding: 20px;
     }
 
-    .accordion-item.active .accordion-body {
-        padding-bottom: 1.25rem;
+    .practice-header-left {
+        gap: 14px;
+    }
+
+    .practice-title-text {
+        font-size: 19px;
     }
 }
